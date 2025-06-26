@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Restaurants.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -29,5 +29,14 @@ namespace Restaurants.Api.Controllers
             })
             .ToArray();
         }
+
+        [HttpPost("name/{take}")]
+        public string Hello([FromQuery] string name ,[FromRoute] int take)
+            => $"Hello {name} \n {take}";
+        /*
+         if use [fromBody]  --> data binding 
+         for the attribute come in request you should bind this data in the object [class] and 
+        you should the property of this class have the same attribute in the reqest body 
+         */
     }
 }
