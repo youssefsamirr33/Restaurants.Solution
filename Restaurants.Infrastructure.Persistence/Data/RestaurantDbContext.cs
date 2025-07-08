@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Restaurants.Domains.Entities.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,7 @@ namespace Restaurants.Infrastructure.Persistence.Data
 
 
         // define the Dbsets from entities 
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Table> Tables { get; set; }
     }
 }

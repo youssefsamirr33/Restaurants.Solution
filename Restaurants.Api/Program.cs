@@ -1,4 +1,6 @@
 
+using Restaurants.Infrastructure.Persistence;
+
 namespace Restaurants.Api
 {
     public class Program
@@ -13,10 +15,13 @@ namespace Restaurants.Api
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(); 
+            builder.Services.AddSwaggerGen();
+
+            // Add dependancy Injection container for application dbcontext
+            builder.Services.AddRestaurantContextService(builder.Configuration);
             #endregion
 
-            var app = builder.Build();
+             var app = builder.Build();
 
             #region Configure middlware services
             // Configure the HTTP request pipeline.
