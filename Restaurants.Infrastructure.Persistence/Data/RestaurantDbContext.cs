@@ -19,12 +19,12 @@ namespace Restaurants.Infrastructure.Persistence.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssemblyInformation).Assembly);
         }
 
 
         // define the Dbsets from entities 
-        public DbSet<Restaurant> Restaurants { get; set; }
-        public DbSet<Table> Tables { get; set; }
+        public DbSet<restaurant> Restaurants { get; set; }
+        public DbSet<table> Tables { get; set; }
     }
 }

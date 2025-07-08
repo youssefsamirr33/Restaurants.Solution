@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Domains.Entities.Restaurant
 {
-    public class Restaurant : BaseAuditableEntity<int>
+    public class restaurant : BaseAuditableEntity<int>
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string state { get; set; }
-        public string Zip_Code { get; set; }
-        public string Country { get; set; }
-        public string phone { get; set; }
-        public string Email { get; set; }
-        public string WebSite { get; set; }
+        public required string Name { get; set; }
+        public required string Address { get; set; }
+        public required string City { get; set; }
+        public required string state { get; set; }
+        public required string Zip_Code { get; set; }
+        public required string Country { get; set; }
+        public required string phone { get; set; }
+        public required string Email { get; set; }
+        public required string WebSite { get; set; }
 
     }
 }

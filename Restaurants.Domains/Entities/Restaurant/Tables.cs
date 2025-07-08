@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Domains.Entities.Restaurant
 {
-    public class Table : BaseAuditableEntity<int>
+    public class table : BaseAuditableEntity<int>
     {
         public string Table_Number { get; set; }
         public int Capacity { get; set; }
@@ -17,6 +17,6 @@ namespace Restaurants.Domains.Entities.Restaurant
 
 
         public int restId { get; set; }
-        public Restaurants restaurants { get; set; }  // navigational property 
+        public restaurant restaurants { get; set; }  // navigational property 
     }
 }
