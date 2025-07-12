@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using Restaurants.Api.Extentions;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Persistence.Data;
 
@@ -23,24 +24,11 @@ namespace Restaurants.Api
             builder.Services.AddRestaurantContextService(builder.Configuration);
             #endregion
 
-             var app = builder.Build();
+            var app = builder.Build();
 
-            var scoped = app.Services.CreateAsyncScope();
-            var services = scoped.ServiceProvider; // used to resolve dependancies
-            var dbContext = services.GetRequiredService<RestaurantDbContext>();
-            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-
-            try
-            {
-                var penddingMigrations = dbContext.Database.GetPendingMigrations();
-                if (penddingMigrations.Any())
-                    await dbContext.Database.MigrateAsync(); // update-database 
-            }
-            catch (Exception ex)
-            {
-                var logger = loggerFactory.CreateLogger<Program>();
-                logger.LogError(ex, "An Error has been ocured when apply migration");
-            }
+            #region DataBase Initializer and data seeding
+            await app.Initializers(); 
+            #endregion
 
             #region Configure middlware services
             // Configure the HTTP request pipeline.

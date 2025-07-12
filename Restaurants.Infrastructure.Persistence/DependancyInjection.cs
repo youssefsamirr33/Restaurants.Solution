@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Restaurants.Domains.Contract;
 using Restaurants.Infrastructure.Persistence.Data;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,9 @@ namespace Restaurants.Infrastructure.Persistence
             {
                 options.UseSqlServer(configuration.GetConnectionString("defaultConnection"));
             });
-            
+
+            // allow dependancy injection for dataBase Initializer in service container 
+            services.AddScoped(typeof(IDataBaseInitializer), typeof(DataBaseInitializer));
 
             return services;
         }
