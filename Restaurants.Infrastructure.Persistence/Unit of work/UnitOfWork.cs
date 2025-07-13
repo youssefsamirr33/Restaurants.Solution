@@ -2,11 +2,6 @@
 using Restaurants.Domains.Contract;
 using Restaurants.Infrastructure.Persistence.Data;
 using Restaurants.Infrastructure.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurants.Infrastructure.Persistence.Unit_of_work
 {

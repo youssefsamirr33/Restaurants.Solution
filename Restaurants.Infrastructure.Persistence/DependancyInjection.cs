@@ -3,11 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domains.Contract;
 using Restaurants.Infrastructure.Persistence.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Restaurants.Infrastructure.Persistence.Unit_of_work;
 
 namespace Restaurants.Infrastructure.Persistence
 {
@@ -22,6 +18,7 @@ namespace Restaurants.Infrastructure.Persistence
 
             // allow dependancy injection for dataBase Initializer in service container 
             services.AddScoped(typeof(IDataBaseInitializer), typeof(DataBaseInitializer));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
             return services;
         }

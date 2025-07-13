@@ -20,7 +20,7 @@ namespace Restaurants.Infrastructure.Persistence.Data.Config.Restaurant
             builder.Property(t => t.Description).IsRequired().HasMaxLength(100);
 
             builder.HasOne(r => r.restaurants)
-                .WithMany()
+                .WithMany(r => r.Tables)
                 .HasForeignKey(r => r.restId)
                 .OnDelete(DeleteBehavior.Cascade);
 
